@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-1 text-center watch">
-                    Prodotti di : {{$user->name}}
+                    Prodotti per categoria: {{$category->name}}
                 </h1>
             </div>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row">
-            @foreach($user->products as $product)
+            @foreach($category->products as $product)
             <div class="col-4">
                 <x-card
                 :product='$product'

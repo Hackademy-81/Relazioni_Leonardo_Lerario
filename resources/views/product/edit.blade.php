@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-12">
                 <h1 class="display-1 text-center watch">
-                    Crea il tuo prodotto
+                    Modifica il tuo prodotto : {{$product->name}}
                 </h1>
             </div>
         </div>
@@ -12,19 +12,20 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-8">
-                <form method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('product.update', $product)}}" enctype="multipart/form-data">
                     @csrf
+                    {{-- fare il bottone per la modifica --}}
                     <div class="mb-3">
                       <label class="form-label">Nome prodotto</label>
-                      <input type="text" class="form-control" name="name">
+                      <input type="text" class="form-control" name="name" value="{{$product->name}}">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Descrizione</label>
-                        <textarea name="body" class="form-control" cols="30" rows="10"></textarea>
+                        <textarea name="body" class="form-control" cols="30" rows="10">{{$product->body}}</textarea>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Prezzo</label>
-                        <input type="number" class="form-control" name="price">
+                        <input type="number" class="form-control" name="price" value="{{$product->price}}">
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Categorie</label>
@@ -45,6 +46,9 @@
                         <small>Premi ctrl + click per selezionare più tags</small>
                       </div>
 
+                      <div class="mb-3">
+                        <img src="{{Storage::url($product->img)}}" alt="" class="w-25 my-3">
+                      </div>
 
                       <div class="mb-3">
                         <label class="form-label">Immagine</label>
